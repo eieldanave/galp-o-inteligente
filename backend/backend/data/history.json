@@ -1,0 +1,20 @@
+[
+  {
+    "sku": "FEJ-200",
+    "nome": "Feijão",
+    "dataHora": "2025-10-31T13:28:13.911Z",
+    "endereco": "Expedição - Posição de Saída",
+    "motivo": "A validade restante do produto é de 5 dias, o que é inferior ao limite de 15 dias para realocação prioritária à área de expedição, garantindo a rápida movimentação (critério FEFO/FIFO).",
+    "lpn": "LPN-SL-20251031-FEJ2-PBHTAS",
+    "tipoEmbalagem": "fracionado"
+  },
+  {
+    "sku": "FEJ-200",
+    "nome": "Feijão",
+    "dataHora": "2025-10-31T13:06:06.880Z",
+    "endereco": "Expedição",
+    "motivo": "O produto possui uma validade extremamente curta (5 dias). A regra de validade (< 15 dias) é prioritária para garantir o despacho imediato, sobrepondo-se à regra de perecível, que exigiria apenas a Área Refrigerada (Assumindo que a Área de Expedição mantém as condições adequadas até o carregamento).",
+    "lpn": "LPN-SL-20251031-FEJ2-DGCTGP",
+    "tipoEmbalagem": "fracionado"
+  }
+]

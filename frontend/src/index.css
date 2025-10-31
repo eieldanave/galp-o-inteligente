@@ -1,0 +1,41 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Ajustes de base para modo escuro */
+:root {
+  color-scheme: dark;
+}
+html, body, #root {
+  height: 100%;
+}
+
+/* Animações leves para modais e ícones */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slide-up {
+  from { transform: translateY(8px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 150ms ease-out;
+}
+.animate-slide-up {
+  animation: slide-up 180ms ease-out;
+}
+
+/* Icones e badges com tamanho consistente */
+.icon,
+.badge-icon {
+  width: 1.5rem; /* 24px, abaixo do máximo 32px */
+  height: 1.5rem;
+}
+
+/* Evitar sobreposição e melhorar rolagem em modais longos */
+.modal-scroll {
+  max-height: 85vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
