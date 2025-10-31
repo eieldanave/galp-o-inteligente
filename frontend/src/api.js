@@ -131,3 +131,40 @@ export async function processarOCR(imagemFile) {
 export async function getStatusOCR() {
   return fetchWithRetry(`${baseUrl}/api/ocr/status`);
 }
+
+// Layout APIs
+export async function listSpaces() {
+  return fetchWithRetry(`${baseUrl}/api/layout/spaces`);
+}
+
+export async function getSpace(id) {
+  return fetchWithRetry(`${baseUrl}/api/layout/spaces/${id}`);
+}
+
+export async function createSpace(space) {
+  return fetchWithRetry(`${baseUrl}/api/layout/spaces`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(space)
+  });
+}
+
+export async function listShelves() {
+  return fetchWithRetry(`${baseUrl}/api/layout/shelves`);
+}
+
+export async function createShelf(shelf) {
+  return fetchWithRetry(`${baseUrl}/api/layout/shelves`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(shelf)
+  });
+}
+
+export async function placeShelf(spaceId, payload) {
+  return fetchWithRetry(`${baseUrl}/api/layout/spaces/${spaceId}/place`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  });
+}

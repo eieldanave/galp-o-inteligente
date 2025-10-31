@@ -15,6 +15,7 @@ import enderecosRouter from './routes/enderecos.js';
 import ocrRouter from './routes/ocr.js';
 import chatRouter from './routes/chat.js';
 import debugRouter from './routes/debug.js';
+import layoutRouter from './routes/layout.js';
 
 dotenv.config();
 
@@ -41,6 +42,7 @@ app.use('/api', enderecosRouter);
 app.use('/api', ocrRouter);
 app.use('/api', chatRouter);
 app.use('/api', debugRouter);
+app.use('/api', layoutRouter);
 
 app.listen(port, () => {
   console.log(`Smart Location backend rodando em http://localhost:${port}`);

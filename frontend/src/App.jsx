@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useRef } from 'react';
 import Chart from 'chart.js/auto';
 import { sugerirEndereco, getHistorico, limparHistorico, getRecursos, getResumoHistorico, gerarRelatorioIA, sugerirProdutos, sendChatMessage, processarOCR } from './api.js';
+import LayoutPlanner from './pages/LayoutPlanner.jsx';
 
 const initialProduct = {
   nome: '',
@@ -54,6 +55,7 @@ function useViewportAnimation() {
 }
 
 export default function App() {
+  const [view, setView] = useState('produto');
   const [produto, setProduto] = useState(initialProduct);
   const [sugestao, setSugestao] = useState(null);
   const [showModal, setShowModal] = useState(false);
@@ -440,12 +442,34 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100">
       <header className="border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-semibold">Smart Location</h1>
-          <span className="text-sm text-gray-400">Módulo IA de endereçamento</span>
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <h1 className="text-xl font-semibold">Smart Location</h1>
+            <span className="text-sm text-gray-400">Selecione a operação</span>
+          </div>
+          <div className="mt-3 flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setView('produto')}
+              className={`px-3 py-2 rounded text-sm ${view === 'produto' ? 'bg-indigo-600 text-white' : 'bg-gray-800 text-gray-200 hover:bg-gray-700'}`}
+            >
+              Buscar Produto
+            </button>
+            <button
+              type="button"
+              onClick={() => setView('layout')}
+              className={`px-3 py-2 rounded text-sm flex items-center gap-2 ${view === 'layout' ? 'bg-indigo-600 text-white' : 'bg-gray-800 text-gray-200 hover:bg-gray-700'}`}
+            >
+              Planejar Galpão
+              <span className="text-[10px] px-2 py-0.5 rounded bg-indigo-600/20 text-indigo-300 ring-1 ring-indigo-500/30">Novo</span>
+            </button>
+          </div>
         </div>
       </header>
 
+      {view === 'layout' ? (
+        <LayoutPlanner />
+      ) : (
       <main className="max-w-6xl mx-auto px-4 py-6 grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6">
         {/* Modal de Sugestão */}
         {showModal && sugestao && (
@@ -999,6 +1023,7 @@ export default function App() {
           </div>
         </div>
       </main>
+      )}
 
       {/* Chatbot flutuante */}
       {!chatOpen && (
